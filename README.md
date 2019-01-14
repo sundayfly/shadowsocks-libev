@@ -59,6 +59,27 @@ You have to install libsodium at least 1.0.8, but recommended 1.0.12 or later ve
 - [Docker](#docker)
 
 * * *
+### Docker
+```
+shadowsocks:
+  image: shadowsocks/shadowsocks-libev
+  ports:
+    - "8388:8388/tcp"
+    - "8388:8388/udp"
+  environment:
+    - METHOD=chacha20-ietf-poly1305
+    - PASSWORD=sundayle
+  restart: always
+```
+```
+curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+docker-compose up -d
+```
+docker run
+```
+docker run -d --name=ss -p 8388:8388 -e PASSWORD='sundayle' -e METHOD='chacha20-ietf' -e PROTOCOL='auth_aes128_md5' sundayle/shadowsocksr
+```
 
 ### Pre-build configure guide
 
